@@ -1,0 +1,80 @@
+@use "sass:list";
+@use "sass:map";
+
+$_known-prefix: col, bgc;
+
+$_color-levels: primary, secondary;
+
+$_mailchimp-editable: false;
+
+$_color-names:(
+  red: #ff0000,
+  green: #00ff00,
+  blue: #0000ff
+);
+
+$color-set:();
+/// Combine color-names map and color-level list
+/// 
+/// @param {list} $keys-name-list
+///   level names type list
+/// @param {map} $color-names-map
+///   color name type map
+@function _create-color-set($keys-name-list, $color-names-map){
+  $map:();
+  $temp-map:();
+  $list-values: map.values($color-names-map);
+  @for $i from 1 through length($keys-name-list){
+    // store temprorary map
+    $temp-map: (nth($keys-name-list, $i): nth($list-values, $i));
+    // merge maps
+    $map: map.merge($map, $temp-map);
+  }
+  @return $map;
+}
+
+/// Create color class
+/// 
+/// @param {string} $prefix
+///   prefix for color class
+/// @param {list} $color-levels
+///   the color level e.g primary/secondary
+/// @param {map} $colors-name
+///   color name or hex code
+/// @param {boolean} $mailchimp
+///   write editable mailchimp css comments
+@mixin configure($color-levels, $color-names, $prefix:$_known-prefix, $mailchimp:false){
+  $_known-prefix: $prefix !global;
+  $_color-levels: $color-levels !global;
+  $_color-names: $color-names !global;
+  $_mailchimp-editable: $mailchimp !global;
+  $color-set: _create-color-set($_color-levels, $_color-names) !global;
+}
+
+@mixin style($prefix, $color-level){
+    @if not list.index($_known-prefix, $prefix){
+        @warn "use col or bgc for prefix in $prefix";
+    }
+    $property: if($prefix == col, color, background-color);
+    /* #{$prefix} Color*/
+    @each $list in $color-level{
+      @if $_mailchimp-editable{
+      /**
+      * @tab Colors
+      * @section #{list.nth($color-levels,$i)} color
+      */
+      };
+      .#{$prefix}{
+         &-#{$list}{
+           @if $_mailchimp-editable{
+             #{"/*@editable*/ "}#{$property}:map.get($color-set, $list);
+           } @else {
+            #{$property}:map.get($color-set, $list);
+           }
+        }
+      }
+    }
+  }
+
+//@include colors();
+// @include colors(col, primary secondary , red blue,true);

@@ -1,0 +1,50 @@
+$_my-font:(
+  "h1" 44 1.25,
+  "h2" 42 1.25,
+  "h3" 38 1.25,
+  "content" 14 1.5);
+
+$_font-family:(
+  "heading": (Helvetica, Arial, sans-serif),
+  "content": (Geordia, "Times New Roman", serif)
+);
+
+$_same-family: true;
+
+
+/// Configure typhography
+/// 
+/// @param {list} $the-font
+/// list of font class, size, line height
+/// @param {map} $font-family
+/// map of font family
+/// @param {boolean} $same-family:true.
+/// set all type to use the same font family
+@mixin configure($the-font, $font-family, $same-family:true){
+    $_myfont : $the-font !global;
+    $_font-family: $font-family !global;
+    $_same-family: $same-family !global;
+}
+
+@mixin style {
+    /* TYPHOGRAPHY */
+    %same-font {
+        // group class together
+        font-family: map-get($_font-family, heading);
+    }
+    @each $class, $size, $line-height in $_my-font {
+        @if ($_same-family == false and $class == content){
+            .#{$class}{
+                font-family:map-get($_font-family, "content");
+                font-size: $size + px;
+                line-height: ($line-height * $size) + px;
+            }
+        } @else {
+            .#{$class}{
+                @extend %same-font; // group class together
+                font-size: $size + px;
+                line-height: ($line-height * $size) + px;
+            }
+        }
+    }
+}

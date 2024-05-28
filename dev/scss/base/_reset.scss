@@ -1,0 +1,53 @@
+$_email-width: 804;
+
+/// Configure email width
+/// @param {number} $email-width
+/// set email width
+@mixin configure($email-width){
+	$_email-width: $email-width !global;
+}
+
+@mixin style {
+	/**RESET**/
+	body{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
+	}
+
+	table, td{border-collapse: collapse;}
+
+	a{
+		&, &:link, &:hover, &:visited{text-decoration: none;}
+		img {
+			border:none;
+		}
+	}
+
+	img{
+		outline: none;
+		text-decoration: none;
+		-ms-interpolation-mode: bicubic;
+	}
+
+	p{
+		margin: 0;
+	}
+
+	img, .img_fix{
+		display:block;
+	}
+
+	.ExternalClass{ // Force Hotmail to display emails at full width
+		width:100%;
+		& p, & span, & font, & td, & div{ // Force Hotmail to display normal line spacing.
+			line-height: 150%;
+		}
+	}
+
+	.gmail-fix{
+		min-width: $_email-width;
+	}
+}

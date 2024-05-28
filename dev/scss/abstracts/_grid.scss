@@ -1,0 +1,99 @@
+@use "sass:map";
+$use-percent: false;  // Pakai pixel atau percent untuk ukuran column
+$grid-gap: 24;        // Grid gap/gutter: jarak antar column
+$grid-column: 29;     // Grid column: lebar per column
+$grids: null;         // grids map
+
+// Grid with
+// lebar column x 12 (karena pakai sistem 12 grid)
+// ditambah
+// lebar gap/gutter grid x 11 (gap/gutter hanya sampai 11 untuk sistem grid 12)
+$grid-width: calc(($grid-column * 12) + ($grid-gap * 11));
+
+/// Calculate the width of each grid type
+/// 
+/// @param {number} $column
+/// set grid width
+/// @param {number} $gap
+/// set grid gap/gutter
+/// @param {string} $grid-type
+/// grid type to calculate
+/// @return grid type width
+@function _calculate-grid-size($column, $gap, $grid-type)
+{
+  $grid-size: 0;
+  $grid-width: calc(($column * 12) + ($gap * 11)) !global;
+  
+  @if ($grid-type == full){
+    $grid-size: calc(($column * 12) + ($gap * 11));
+  } @else if ($grid-type == half){
+    $grid-size: calc(($grid-width - $gap) / 2);
+  } @else if ($grid-type == half-int){
+    $grid-size: calc($grid-width / 2);
+  } @else if ($grid-type == one-third){
+    $grid-size: calc(($grid-width - ($gap * 2)) / 3);
+  } @else if ($grid-type == one-third-int){
+    $grid-size: calc($grid-width / 3);
+  } @else if ($grid-type == two-third){
+    $grid-size: calc(((($grid-width - ($gap * 2)) / 3) * 2) + $gap);
+  } @else if ($grid-type == two-third-int){
+    $grid-size: calc(($grid-width / 3) * 2);
+  } @else if ($grid-type == one-fourth){
+    $grid-size: calc(($grid-width - ($gap * 3)) / 4);
+  } @else if ($grid-type == one-fourth-int){
+    $grid-size: calc($grid-width / 4);
+  } @else if ($grid-type == three-fourth){
+    $grid-size: calc(((($grid-width - ($gap * 3)) / 4) * 3) + ($gap * 2));
+  } @else if ($grid-type == three-fourth-int){
+    $grid-size: calc(($grid-width / 4) * 3);
+  } @else {
+    @error "#{$grid-type} is not a valid grid type (full, half, half-int, one-third, one-third-int, two-third, two-third-int, one-fourth, one-fourth-int, three-fourth, three-fourth-int)";
+  }
+  
+  @return $grid-size;
+}
+
+/// Configure grid
+/// @param {number} $column-width
+/// width of columns in grid
+/// @param {number} $gap
+/// gap between column (gutter)
+/// @param {string} $grid-type
+/// type of grid
+/// @param {boolean} $use-precent
+/// set to use percent for grid width, except for full grid size stil use pixel
+@mixin configure($column-width, $gap, $grid-type, $use-percent:false){
+  $temp-map:();
+  $grids:() !global;
+
+  @each $type in $grid-type{
+    $temp-map: ($type: _calculate-grid-size($column-width, $gap, $type));
+    $grids: map.merge($grids, $temp-map) !global;
+  }
+
+  $use-percent: $use-percent !global;
+}
+
+//
+// Create grid classes
+//
+@mixin create-grid{
+    /**GRID**/
+    $map : $grids; // nilai lebar grid
+
+    .grid{
+      @each $key, $value in $map{ // ambil value array $grid-list
+        &-#{$key}{
+          @if ($use-percent){ // nilai kolom jadi percent
+            @if($key == full){ // khusus untuk grid full dibikin pixel jika $use-percent: true
+              width: $value + px;
+            } @else {
+              width: calc(($value / $grid-width) * 100%);
+            }
+          } @else { // nilai kolom jadi pixel
+            width: $value + px;
+          }
+        }
+      }
+    }
+}

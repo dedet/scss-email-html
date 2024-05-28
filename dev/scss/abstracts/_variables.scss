@@ -1,0 +1,160 @@
+$prefix : ddc;
+
+// $table-reset-full: true;
+
+// [GRIDS]
+// Gunakan pixel atau percent untuk ukuran column
+// $use-pixel: false !default;
+
+// Defaullt grid yang muncul di css, grid bisa dipilih mana saja yang akan dimunculkan untuk overide default;
+$grid-list:(
+    full,
+    half,
+    half-int,
+    one-third,
+    one-third-int,
+    two-third,
+    two-third-int,
+    one-fourth,
+    one-fourth-int
+);
+
+//---
+// [EMAIL BODY WIDTH]
+// Default lebar email 660, 
+// pilihan lebar email, 660, 684, 708, 720
+$email-width: 804;
+
+//---
+// [FONTS]
+// Tipe font untuk heading dan paragraph sama;
+// overide tipe font
+// $same-font: false;
+
+// Disable line-height ini jika font setting sudah OK
+// karena akan dimasukkan dalam condition style
+// $enable-mso-line-height: false;
+
+// nilai default rubah di _settings.scss
+// paragraph hanya dirubah jika tidak sama, atau bisa dihapus
+// $font-families:(
+//     heading: ('Raleway', Helvetica, Arial, sans-serif),
+//     paragraph: ('Open Sans', Helvetica, Arial, sans-serif)
+// );
+
+// overide ukuran font,  font class digenerate berdasarkan font size yang di declare
+// $font-sizes:(
+//     h1: 40px,
+//     h2: 31px,
+//     h3: 24px,
+//     h4: 19px,
+//     h5: 16px,
+//     p: 14px
+// );
+
+//----
+// [COLORS]
+// variable warna
+$orange: #f7901e;
+$light-orange:#f9f2ec;
+$dark-grey: #313131;
+$light-grey: #717171;
+$dark-white: #efefef;
+$white: #ffffff;
+
+//===[NEW-COLOR]====
+// $carnation: #F6655F;
+// $mullberry: #CB5789;
+$lightning-yellow: #F7BA1E;
+$pomegranate: #F7481E;
+
+// [COLOR LEVEL]
+// rubah level warna disini
+$color-level:(
+    primary: $orange,
+    second: $dark-grey,
+    third: $light-grey,
+    fourth: $white,
+    fifth: $lightning-yellow,
+    sixth: $pomegranate,
+    seventh: $dark-white,
+    eighth: $light-orange
+);
+
+// [FONT AND BACKGROUND COLOR]
+// pilih class untuk color
+// overide color classs
+$cols:(
+    primary,
+    second,
+    third,
+    fourth,
+    fifth,
+    sixth
+);
+
+// pilih class untuk background color
+// overide background color class
+$bgcs:(
+    primary,
+    second,
+    third,
+    fifth,
+    sixth,
+    seventh,
+    eighth
+);
+
+// [BUTTON-BORDER]
+// Setting untuk button border radius
+$border-radius: true;
+$border-radius-size: 5px;
+
+//Setting bottron border
+$button-border: true;
+// $button-border-size: 2px !default;
+// $button-border-type: solid !default;
+$button-border-color: $white;
+
+//Button letter spacing
+$letter-spacing: true;
+$letter-spacing-size: 2px;
+
+//Button font weight
+$letter-bold: true;
+
+//Button transiTion
+// Transition animate button
+// $transition-effect: true !default;
+
+//Transision color
+$transistion-color: #19749C;
+
+// transition-property, Sets the CSS properties to which a transition effect should be applied.
+//syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property#Syntax
+// $transition-property: all !default;
+
+// transition-duration, Sets the length of time a transition animation should take to complete.
+//s for second; ms for millusecond
+//syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration#Syntax
+// $transition-duration: 0.4s !default;
+
+// transition-timing-function, Sets how intermediate values are calculated for CSS properties being affected by a transition effect.
+//syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function#Syntax
+// $transition-timing-function: ease-in-out !default; 
+
+// transition-delay, Specifies the duration to wait before starting a property's transition effect
+//syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-delay#Syntax
+// $transition-delay: 0s !default;
+
+//Button Padding 
+$button-wider-padding-top-bottom: 10px;
+$button-wider-padding-left-right: 25px;
+
+$button-padding-top-bottom: 5px;
+$button-padding-left-right: 23px !default;
+
+$button-small-padding-top-bottom: 3px;
+$button-small-padding-left-right: 13px;
+
+// @include colors.colors(col,1st 2nd, red blue);

@@ -1,0 +1,93 @@
+/**RESET**/
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+table, td {
+  border-collapse: collapse;
+}
+
+a, a:link, a:hover, a:visited {
+  text-decoration: none;
+}
+a img {
+  border: none;
+}
+
+img {
+  outline: none;
+  text-decoration: none;
+  -ms-interpolation-mode: bicubic;
+}
+
+p {
+  margin: 0;
+}
+
+img, .img_fix {
+  display: block;
+}
+
+.ExternalClass {
+  width: 100%;
+}
+.ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+  line-height: 150%;
+}
+
+.gmail-fix {
+  min-width: 804px;
+}
+
+/* TYPHOGRAPHY */
+.h3, .h2, .h1 {
+  font-family: Roboto, sans;
+}
+
+.h1 {
+  font-size: 44px;
+  line-height: 55px;
+}
+
+.h2 {
+  font-size: 42px;
+  line-height: 52.5px;
+}
+
+.h3 {
+  font-size: 38px;
+  line-height: 47.5px;
+}
+
+.content {
+  font-family: "Times New Roman", sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/**GRID**/
+.grid-full {
+  width: 1050px;
+}
+.grid-half-int {
+  width: 525px;
+}
+.grid-half {
+  width: 510px;
+}
+.grid-one-third {
+  width: 330px;
+}
+.grid-two-third-int {
+  width: 700px;
+}
+.grid-three-fourth-int {
+  width: 787.5px;
+}
+.grid-one-fourth {
+  width: 240px;
+}/*# sourceMappingURL=main.css.map */

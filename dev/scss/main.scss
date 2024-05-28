@@ -1,0 +1,43 @@
+@use 'sass:list';
+@use 'base/reset';
+@use 'abstracts/colors' as col;
+@use 'abstracts/typhography' as type;
+@use 'abstracts/grid';
+
+// configure reset
+@include reset.configure(804px);
+@include reset.style;
+
+// configure color
+@include col.configure(
+  (pertama, kedua, ketiga),
+  (
+    merah: merah,
+    hijau: hujai,
+    biru: biru
+  )
+);
+
+// configure typhography
+@include type.configure(
+  (
+    'h1' 50 1.25,
+    'h2' 45 1.25,
+    'content' 16 1.5
+  ),
+  (
+    'heading': (Roboto, sans),
+    'content': ("Times New Roman", sans-serif)
+  ),
+  false
+);
+@include type.style;
+
+// configure grids
+@include grid.configure(
+  60,
+  30,
+  (full, half-int, half, one-third, two-third-int, three-fourth-int, one-fourth)
+);
+ @include grid.create-grid;
+ @debug grid.$grid-width;

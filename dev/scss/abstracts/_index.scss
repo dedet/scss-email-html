@@ -1,0 +1,16 @@
+@forward 'grid' as grid_*;
+@forward 'typhography' with (
+  // Change settings here
+  $font-family:(
+     "heading": (Roboto, Arial, sans-serif),
+     "content": (Arial, "Times New Roman", serif) 
+   ),
+   $same-family: false,
+   $my-font: (
+     "h1" 100 2.125,
+     "h2" 80 2.125,
+     "content" 20 1.5
+   )
+ );
+@forward 'colors';
+// @forward 'variables';

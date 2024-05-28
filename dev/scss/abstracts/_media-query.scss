@@ -1,0 +1,143 @@
+/**MEDIA_QUERY**/
+$media-breaks:(
+    one: 708px,
+    two: 559px,
+    three: 480px,
+    four: 359px
+);
+
+/**==BREAK #{map-get($media-breaks, one)}**/
+@media (max-width: map-get($media-breaks, one)), (max-device-width: map-get($media-breaks, one)){
+    %w-one-100{ width: 100% !important; }
+
+    %d-one-none{ display: none !important; }
+
+    %m-one-auto{ Margin: auto !important; }
+
+    %f-one-none{ float: none !important; }
+
+    %h-one-auto{ height: auto !important; }
+    
+    %d-none-block{ display: block !important; }
+
+    // element width
+    [class~="ddc-mobile"]{ width: map-get($media-breaks, two)+1 !important; }
+    [class~="m__w-100"]{ @extend %w-one-100; }
+    [class~="m__w-50"]{ width: 50% !important; }
+    [class~="m__img-100"]{
+        img{
+            @extend %w-one-100;
+            @extend %h-one-auto;
+        }
+    }
+    [class~="m__img-70"]{
+        img{
+            width: 65% !important;
+            height: auto !important;
+        }
+    }
+    [class~="m__w-135"]{ width: 135px !important; }
+
+    // direction normal
+    [class~="m__dir-default"]{
+        direction: ltr !important;
+    }
+
+    // attribute value = auto
+    [class~="m__margin-auto"]{ @extend %m-one-auto;}
+    [class~="m__h-auto"]{ @extend %h-one-auto; }
+
+    //float none
+    [class~="m__f-none"]{ @extend %f-one-none; }
+
+    // remove <br>
+    [class~="m__br-hide"] br{ display: none !important;}
+    
+    // align center
+    [class~="m__t-center"]{ text-align: center !important; }
+    [class~="m__t-left"]{ text-align: left !important; }
+    
+    //display block
+    [class~="m__d-block"]{
+        @extend %d-none-block;
+        @extend %w-one-100;
+    }
+
+    //padding
+    [class~="m__p-0"]{ padding: 0 !important; }
+    [class~="m__pb-13"]{ padding-bottom: 13px !important; }
+    [class~="m__pr-12"]{ padding-right: 12px !important; }
+    [class~="m__pl-12"]{ padding-left: 12px !important; }
+    [class~="m__pt-24"]{ padding-top:24px !important; }
+    [class~="m__pb-24"]{ padding-bottom: 24px !important; }
+    [class~="m__pl-24"]{ padding-left: 24px !important; }
+    [class~="m__pt-37"]{ padding-top: 37px !important; }
+    [class~="m__pb-37"]{ padding-bottom: 37px !important; }
+    [class~="m__pl-0"]{ padding-left: 0 !important; }
+    [class~="m__pr-0"]{ padding-right: 0 !important; }
+
+    // display inline-block
+    img{
+        display: inline-block !important;
+    }
+
+    [class~="m__reset-radius"]{
+        img{ border-radius: 0 !important; }
+    }
+
+}
+
+/**==BREAK #{map-get($media-breaks, three)}**/
+@media (max-width: map-get($media-breaks, three)), (max-device-width: map-get($media-breaks, three)){
+    %w-three-100{ width: 100% !important; }
+
+    %f-three-none{ float: none !important; }
+
+    %d-three-none{ display: none !important; }
+
+    %m-three-auto{ Margin: auto !important; }
+
+    %h-three-auto{ height: auto !important; }
+
+    %d-three-block{ display: block !important; }
+
+    // element width
+    [class~="ddc-mobile"]{ @extend %w-three-100; }
+    [class~="m2__w-100"]{ @extend %w-three-100; }
+    [class~="m2__img-100"]{
+        img{ @extend %w-three-100; }
+    }
+    [class~="m2__img-70"]{
+        img{
+            width: 65% !important;
+            height: auto !important;
+        }
+    }
+
+    [class~="m2__f-none"]{ @extend %f-three-none; }
+
+    [class~="m2__margin-auto"]{ @extend %m-three-auto;}
+
+    // display block
+    [class~="m2__d-block"]{
+        @extend %d-three-block;
+        @extend %w-three-100;
+    }
+
+    // padding
+    [class~="m2__p-0"]{ padding: 0 !important; }
+    [class~="m2__plr-24"]{
+        padding-left:24px !important;
+        padding-right:24px !important;
+    }
+    [class~="m2__pt-24"]{ padding-top:24px !important; }
+    [class~="m2__pb-24"]{ padding-bottom:24px !important; }
+    [class~="m2__pb-13"]{ padding-bottom: 13px !important; }
+    [class~="m2__pr-10"]{ padding-right: 10px !important; }
+    [class~="m2__plr-10"]{ 
+        padding-left: 10px !important;
+        padding-right: 10px !important; }
+
+    // align center
+    [class~="m2__t-center"]{ text-align: center !important; }    
+}

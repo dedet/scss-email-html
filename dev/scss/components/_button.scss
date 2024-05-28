@@ -1,0 +1,84 @@
+/**BUTTON**/
+//VARS
+$border-radius: false !default;
+$border-radius-size: 25px !default;
+
+$button-border: false !default;
+$button-border-size: 2px !default;
+$button-border-type: solid !default;
+$button-border-color: #ffffff !default;
+
+$letter-spacing: false !default;
+$letter-spacing-size: 2px !default;
+
+$letter-bold: false !default;
+
+$button-wider-padding-top-bottom: 8px !default;
+$button-wider-padding-left-right: 30px !default;
+
+$button-padding-top-bottom: 8px !default;
+$button-padding-left-right: 20px !default;
+
+$button-small-padding-top-bottom: 5px !default;
+$button-small-padding-left-right: 7px !default;
+
+$transition-effect: true !default;
+$transistion-color : #ff0000 !default;
+$transition-property: all !default; //syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property#Syntax
+$transition-duration: 0.4s !default; //s for second; ms for millusecond
+$transition-timing-function: ease-in-out !default; //syntax https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function#Syntax
+$transition-delay: 0s !default; //specifies the duration to wait before starting a property's transition effect
+
+.button{
+	// button border radius
+	@if($border-radius == true){
+		&,td{
+				border-collapse: separate !important;
+			}
+		&__border-radius{
+			border-radius: $border-radius-size;
+		}
+	}
+
+	// button border
+	@if($button-border == true){
+		&__border{
+			border: $button-border-size $button-border-type $button-border-color;
+		}
+	}
+
+	// wider button
+	&__label-wider{
+		padding: $button-wider-padding-top-bottom $button-wider-padding-left-right;
+		@if($letter-spacing == true){
+			letter-spacing: $letter-spacing-size;
+		}
+	}
+
+	// button label padding
+	&__label{
+		padding: $button-padding-top-bottom $button-padding-left-right;
+	}
+
+	// button label small
+	&__label-small{
+		padding: $button-small-padding-top-bottom $button-small-padding-left-right;
+	}
+
+	// button label bold
+	@if($letter-bold == true){
+		&__label, &__label-wider{
+			font-weight: bold;
+		}
+	}
+
+	// button label transition effect
+	@if($transition-effect==true){
+		&__label-wider, &__label, &__label-small{
+			transition: $transition-property $transition-duration $transition-timing-function $transition-delay;
+		}
+		&__label-wider:hover, &__label:hover, &__label-small:hover{
+			background-color: $transistion-color !important;
+		}
+	}
+}
